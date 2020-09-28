@@ -15,6 +15,8 @@ public class MultipleCatches {
 			getallen[positie] = 30 / deler;
 		} catch (ArrayIndexOutOfBoundsException e) {
 			System.out.println("Je moet een positie kiezen tussen 0 en 9.");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		} finally {
 			System.out.println("Je koos positie " + positie);
 		}

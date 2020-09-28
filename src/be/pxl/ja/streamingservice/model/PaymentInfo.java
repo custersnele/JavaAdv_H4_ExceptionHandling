@@ -1,31 +1,15 @@
 package be.pxl.ja.streamingservice.model;
 
+import be.pxl.ja.streamingservice.exception.InvalidDateException;
+
 import java.time.LocalDate;
 
 public class PaymentInfo {
-	private String cardNumer;
-	private CreditCardType type;
+
 	private String firstName;
 	private String lastName;
+	private CreditCardNumber cardNumer;
 	private LocalDate expirationDate;
-	private int securityCode;
-
-	public String getCardNumer() {
-		return cardNumer;
-	}
-
-	public void setCardNumer(String cardNumer) {
-
-		this.cardNumer = cardNumer;
-	}
-
-	public CreditCardType getType() {
-		return type;
-	}
-
-	public void setType(CreditCardType type) {
-		this.type = type;
-	}
 
 	public String getFirstName() {
 		return firstName;
@@ -43,19 +27,18 @@ public class PaymentInfo {
 		this.lastName = lastName;
 	}
 
+	public void setCardNumer(CreditCardNumber cardNumer) {
+		this.cardNumer = cardNumer;
+	}
+
 	public LocalDate getExpirationDate() {
 		return expirationDate;
 	}
 
 	public void setExpirationDate(LocalDate expirationDate) {
+		if (LocalDate.now().plusMonths(1).isAfter(expirationDate)) {
+			throw new InvalidDateException(expirationDate, "expirationDate", "Must be valid for at least 1 month.");
+		}
 		this.expirationDate = expirationDate;
-	}
-
-	public int getSecurityCode() {
-		return securityCode;
-	}
-
-	public void setSecurityCode(int securityCode) {
-		this.securityCode = securityCode;
 	}
 }

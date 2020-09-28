@@ -34,4 +34,8 @@ public class Profile {
 		}
 		return (int) ChronoUnit.YEARS.between(dateOfBirth, LocalDateTime.now());
 	}
+
+	public boolean allowedToWatch(Content content) {
+		return content.getMaturityRating().getMinimumAge() <= getAge();
+	}
 }
