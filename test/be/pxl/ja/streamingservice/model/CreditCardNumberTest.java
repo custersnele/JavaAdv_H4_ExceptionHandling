@@ -46,8 +46,8 @@ public class CreditCardNumberTest {
 	@Test
 	public void throwsInvalidArgumentExceptionWhenNumberTooShort() {
 		assertThrows(IllegalArgumentException.class, () -> {
-					new CreditCardNumber("  53218 76532 1476  ", " 1 2 3 ");
-				});
+			new CreditCardNumber("  53218 76532 1476  ", " 1 2 3 ");
+		});
 	}
 
 	@Test

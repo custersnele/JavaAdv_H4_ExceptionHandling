@@ -13,7 +13,7 @@ public class Account {
 	private StreamingPlan streamingPlan;
 	private List<Profile> profiles = new ArrayList<>();
 
-	public Account(String email, String password) throws NoSuchAlgorithmException {
+	public Account(String email, String password) {
 		this.email = email;
 		setPassword(password);
 		profiles.add(new Profile("Profile1"));
@@ -36,7 +36,7 @@ public class Account {
 		this.email = email;
 	}
 
-	public boolean verifyPassword(String password) throws NoSuchAlgorithmException {
+	public boolean verifyPassword(String password) {
 		return PasswordUtil.isValid(password, this.password);
 	}
 
@@ -44,7 +44,7 @@ public class Account {
 		this.paymentInfo = paymentInfo;
 	}
 
-	public void setPassword(String password) throws NoSuchAlgorithmException {
+	public void setPassword(String password) {
 		this.password = PasswordUtil.encodePassword(password);
 	}
 
