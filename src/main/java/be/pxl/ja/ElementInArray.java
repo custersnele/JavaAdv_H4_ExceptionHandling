@@ -11,7 +11,7 @@ public class ElementInArray {
 
 		System.out.println("Kies een nummer: ");
 		int chosen = scanner.nextInt();
-		if (chosen < elements.length) {
+		if (chosen >= 0 && chosen < elements.length) {
 			System.out.println(elements[chosen]);
 		} else {
 			System.out.println("U koos een verkeerd nummer.");
